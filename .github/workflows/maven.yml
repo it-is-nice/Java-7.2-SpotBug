@@ -1,6 +1,11 @@
 name: Java CI # как называется Workflow
 
-on: [push] # когда срабатывает (на push)
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
 
 jobs: # какие задачи делаем
   build: # сборка
@@ -13,4 +18,4 @@ jobs: # какие задачи делаем
         with:
           java-version: 11 # версия для установки
       - name: Build with Maven
-        run: mvn -B -e verify # запускаем Maven
+        run: mvn -B -e verify
